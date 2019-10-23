@@ -17,6 +17,7 @@ export class App extends Component {
           <React.Fragment>
             <CssBaseline />
             <MuiThemeProvider>
+              <CssBaseline/>
                 <Switch>
                   <Route exact path="/" component={CharacterContainer} />
                 </Switch>

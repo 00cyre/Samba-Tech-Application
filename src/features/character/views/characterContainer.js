@@ -22,7 +22,7 @@ CharacterContainer.defaultProps = {
 
 export const mapStateToProps = (state) => {
   return {
-    Characters: state.Characters
+    Characters: state.characterReducer
   };
 };
 
