@@ -26,6 +26,8 @@ Ao invés de utilizar o sistema tradicional de pesquisa utilizei o metodo autoco
 
 ## Pontos de Melhoria do desenvolvimento
 
+# Problemas relacionados a falta de tempo
+
 #### Layout da page de episódios:
 Devido ao meu curto prazo de tempo disponivel para desenvolver fiz alguns cortes na parte do produto para poder entrega-lo para vocês.
 Como puderam perceber o layout da pagina de episodios não segue o prototipo enviado, a listagem não está estilizada.
@@ -39,5 +41,9 @@ Novamente devido ao curto prazo alguns componentes poderiam ser quebrados e cria
 
 #### Resposta da sugestão
 Não criei um modal adequado para informar o usuário da requisição, apenas um alert.
- 
- 
+
+#### Filtro por status
+Falta de tempo.
+
+#### Teste Unitário.
+Falta de tempo
