@@ -3,6 +3,6 @@ import { characterReducer } from '../features/character/redux';
 import {episodesReducer} from '../features/episodes/redux'
 const reducer = combineReducers({
   characterReducer: characterReducer,
-  episodesReducer:episodesReducer
+  episodesReducer:episodesReducer,
 });
 export default reducer;

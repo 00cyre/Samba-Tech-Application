@@ -42,10 +42,11 @@ export class NavBar extends PureComponent {
           />
           <Button href={'/episodes'} className={classes.episodes}>Episodios</Button>
           <Button href={'/'} className={classes.characters}>Personagens</Button>
+          <Button href={'/suggestion'} className={classes.suggestion}>Sugestão</Button>
           <Grid>
             <span className={classes.characterlabel}>{this.props.pageTitle}</span>
             {
-              this.props.pageTitle !== "Episodios" ? (
+              this.props.pageTitle === "Personagens" ? (
                 <Grid className={classes.filtergrid}>
                   <span className={classes.filtertxt}>Filtre por:</span>
                   <Button variant="outlined" value={'Alive'} onClick={e => this.setFilter(undefined, e.target.value)} className={classes.alivebtn}>Vivo </Button>
@@ -74,6 +75,17 @@ export class NavBar extends PureComponent {
   }
 }
 const styles = theme => ({
+  suggestion: {
+    position: 'absolute',
+    width: 102,
+    left: 623,
+    top: 41,
+    fontSize: 17,
+    display: 'flex',
+    alignItems: 'flex-end',
+    letterSpacing: '0.015em',
+    color: '#5D5D5D',
+  },
   components: {
 
     position: 'absolute',

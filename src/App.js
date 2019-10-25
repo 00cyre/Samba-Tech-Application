@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import store from './store';
 import { ThemeProvider } from "@material-ui/styles";
-//import { withStyles } from '@material-ui/core/styles';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-//import { SuggestionContainer } from './features/suggestion';
 import CharacterContainer from './features/character';
 import { theme } from './styles/styles'
 import EpisodesContainer from './features/episodes';
+import SuggestionContainer from './features/suggestion';
 
 export class App extends Component {
   render() {
@@ -19,6 +18,7 @@ export class App extends Component {
               <Switch>
                 <Route exact path="/" component={CharacterContainer} />
                 <Route exact path="/episodes" component={EpisodesContainer} />
+                <Route exact path="/suggestion" component={SuggestionContainer} />
               </Switch>
             </ThemeProvider>
           </React.Fragment>
@@ -27,7 +27,6 @@ export class App extends Component {
     );
   }
 }
-//<Route path="/suggestion" component={SuggestionContainer} />
 
 export default App;
 
