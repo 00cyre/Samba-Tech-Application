@@ -1,80 +1,53 @@
+import { Grid, Button, TextField, InputAdornment } from "@material-ui/core"
+import { Search } from "@material-ui/icons"
 import React, { PureComponent } from 'react';
-import Grid from '@material-ui/core/Grid';
-import { withStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import _ from 'lodash'
-import NavBar from '../../shared/navigationBar';
+import logo from '../../public/logo512.png'
+import { withStyles } from "@material-ui/styles";
 
-export class CharacterPage extends PureComponent {
-  state = {
-    spacing: 2,
-    setSpacing: '',
-    searchtxt: '',
-    fieldname: undefined,
-    characters: [],
-  }
-  setFields = (value, field) => {
-    this.setState({
-      [field]: value
-    });
-  };
-  componentDidMount() {
-    this.setCharacters('.');
-  }
-  componentDidUpdate() {
-    this.setCharacters(this.state.searchtxt, this.state.fieldname);
-  }
-  setFilter(value = undefined, field = 'name') {
-    field == 'name' ? this.setFields(value, 'searchtxt') : this.setFields(field, 'searchtxt')
-  }
-  setCharacters(txt, field = 'name') {
-    console.log(txt, field);
-    !this.state.searchtxt ? txt = '.' : txt = this.state.searchtxt
-    this.state.characters = this.props.Characters.Characters.filter((e) => {
-      return e[field].toLocaleLowerCase().match(txt.toLocaleLowerCase());
-    })
 
-  }
+export class NavBar extends PureComponent {
+
   render() {
     const { classes } = this.props;
-    const { spacing } = this.state
-    if (this.props.Characters.Characters.length > 1) {
-      this.setCharacters('.');
-    }
     return (
-      <React.Fragment >
-        <Grid container className={classes.components} spacing={spacing}>
-          <NavBar classes={classes} pageTitle={'Personagens'} />
-          <Grid item xs={12}>
-            <Grid container spacing={spacing} className={classes.content}>
-              {this.state.characters.map(value => (
-                <Grid className={classes.rootGrid} key={value.char_id} item>
+      <Grid item xs={12}>
+        <Grid className={classes.navigation}>
+          <img
+            id="imgLogoBreakingBad"
+            className={classes.imglogo}
+            src={logo}
+            alt="Logo Breaking Bad"
+          />
+          <Button className={classes.episodes}>Episodios</Button>
+          <Button className={classes.characters}>Personagens</Button>
+          {this.props.pageTitle !== "Episodios" ? (
+            <Grid>
+              <span className={classes.characterlabel}>{this.props.pageTitle}</span>
+              <Grid className={classes.filtergrid}>
+                <span className={classes.filtertxt}>Filtre por:</span>
+                <Button variant="outlined" value={'Alive'} onClick={e => classes.setFilter(undefined, e.target.value)} className={classes.alivebtn}>Vivo </Button>
+                <Button variant="outlined" value={'Presumed dead'} onClick={e => classes.setFilter(undefined, e.target.value)} className={classes.deadbtn} >Morto</Button>
+                <Button variant="outlined" value={'.'} onClick={e => classes.setFilter(undefined, e.target.value)} className={classes.allbtn}>Todos</Button>
+              </Grid>
+            </Grid>) : ''}
+          <TextField
+            id="character"
+            className={classes.search}
+            label={`Pesquise os ${this.props.pageTitle.toLowerCase()}`}
+            value={classes.searchtxt}
+            onChange={e => classes.setFilter(e.target.value, 'searchtxt')}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <Search></Search>
+                </InputAdornment>
+              ),
+            }}
+          />
 
-                  <Paper className={classes.paper}>
-
-                    <Grid className={classes.image} style={{
-                      background: `linear-gradient(rgba(255, 255, 255, 0),rgb(0, 0, 0)),url(${value.img})`,
-                      backgroundSize: 'cover'
-                    }} />
-                    <Paper className={classes.statusbox}
-                      style={
-                        value.status == 'Deceased' ? { backgroundColor: '#F56523' } : value.status == 'Alive' ? { backgroundColor: '#0A7A42' } : { backgroundColor: '#8C8C8C' }
-                      }>
-                      <span className={classes.statustxt}>{value.status}</span>
-                    </Paper>
-                    <Grid className={classes.charInfo}>
-                      <span className={classes.nametxt}>{value.name}</span>
-                      <span className={classes.birthdaytxt}>⭐ {value.birthday}</span>
-                      <span className={classes.occupationtxt}>{value.occupation.map(e => ' ' + e)} </span>
-                    </Grid>
-                  </Paper>
-                </Grid>
-              ))}
-            </Grid>
-          </Grid>
         </Grid>
-      </React.Fragment >
-    );
+      </Grid>
+    )
   }
 }
 const styles = theme => ({
@@ -293,5 +266,4 @@ const styles = theme => ({
     padding: theme.spacing(2),
   },
 });
-
-export default withStyles(styles)(CharacterPage);
+export default withStyles(styles)(NavBar);

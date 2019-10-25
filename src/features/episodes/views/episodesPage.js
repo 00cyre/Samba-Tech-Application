@@ -4,14 +4,13 @@ import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import _ from 'lodash'
 import NavBar from '../../shared/navigationBar';
+import { Typography, List, ListItem, Divider, ListItemText } from '@material-ui/core';
 
-export class CharacterPage extends PureComponent {
+export class EpisodesPage extends PureComponent {
   state = {
-    spacing: 2,
-    setSpacing: '',
     searchtxt: '',
     fieldname: undefined,
-    characters: [],
+    episodes: [],
   }
   setFields = (value, field) => {
     this.setState({
@@ -19,65 +18,109 @@ export class CharacterPage extends PureComponent {
     });
   };
   componentDidMount() {
-    this.setCharacters('.');
   }
-  componentDidUpdate() {
-    this.setCharacters(this.state.searchtxt, this.state.fieldname);
-  }
-  setFilter(value = undefined, field = 'name') {
-    field == 'name' ? this.setFields(value, 'searchtxt') : this.setFields(field, 'searchtxt')
-  }
-  setCharacters(txt, field = 'name') {
-    console.log(txt, field);
-    !this.state.searchtxt ? txt = '.' : txt = this.state.searchtxt
-    this.state.characters = this.props.Characters.Characters.filter((e) => {
-      return e[field].toLocaleLowerCase().match(txt.toLocaleLowerCase());
-    })
 
-  }
   render() {
     const { classes } = this.props;
-    const { spacing } = this.state
-    if (this.props.Characters.Characters.length > 1) {
-      this.setCharacters('.');
-    }
     return (
       <React.Fragment >
-        <Grid container className={classes.components} spacing={spacing}>
-          <NavBar classes={classes} pageTitle={'Personagens'} />
+        <Grid container className={classes.components} spacing={2}>
+          <NavBar classes={classes} pageTitle={'Episodios'} />
           <Grid item xs={12}>
-            <Grid container spacing={spacing} className={classes.content}>
-              {this.state.characters.map(value => (
-                <Grid className={classes.rootGrid} key={value.char_id} item>
-
-                  <Paper className={classes.paper}>
-
-                    <Grid className={classes.image} style={{
-                      background: `linear-gradient(rgba(255, 255, 255, 0),rgb(0, 0, 0)),url(${value.img})`,
-                      backgroundSize: 'cover'
-                    }} />
-                    <Paper className={classes.statusbox}
-                      style={
-                        value.status == 'Deceased' ? { backgroundColor: '#F56523' } : value.status == 'Alive' ? { backgroundColor: '#0A7A42' } : { backgroundColor: '#8C8C8C' }
-                      }>
-                      <span className={classes.statustxt}>{value.status}</span>
-                    </Paper>
-                    <Grid className={classes.charInfo}>
-                      <span className={classes.nametxt}>{value.name}</span>
-                      <span className={classes.birthdaytxt}>⭐ {value.birthday}</span>
-                      <span className={classes.occupationtxt}>{value.occupation.map(e => ' ' + e)} </span>
-                    </Grid>
-                  </Paper>
-                </Grid>
-              ))}
+            <Grid container spacing={2} className={classes.content}>
+              <table className={classes.root}>
+                {this.props.Episodes.Episodes.map(e => (
+                  <tr className={classes.episodesview}>
+                    <td className={classes.epinfo}>
+                      <span className={classes.episodetxt}>{e.title}</span>
+                      <span className={classes.episodeinfotxt}>Season {e.season} Episodio {e.episode}</span>
+                    </td>
+                    <td className={classes.dateinfotxt}>
+                      <span className={classes.launchdatetxt}>Data de estreia:
+                      {e.air_date}</span>
+                    </td>
+                    <td className={classes.epcharacterinfo}>
+                      <span className={classes.episodecharacters}>Personagens: {e.characters.map(e =>  e + " ")}</span>
+                    </td>
+                  </tr>
+                ))}
+              </table>
             </Grid>
-          </Grid>
-        </Grid>
+          </Grid >
+        </Grid >
       </React.Fragment >
     );
   }
 }
 const styles = theme => ({
+  epcharacterinfo:{
+    width: 501,
+    height: 86,
+    left: 655,
+  },
+  episodecharacters:{
+    width: 261,
+    height: 21,
+    display: 'flex',
+    alignItems: 'center',
+    letterSpacing: '0.005em',
+    color: '#DDDDDD',
+  },
+  root:{
+    width:'100%',
+  },
+  launchdatetxt:{
+    width: 261,
+    height: 21,
+    left: 0,
+    top: 0,
+    fontSize: 24,
+    display: 'flex',
+    alignItems: 'center',
+    letterSpacing: '0.005em',
+    color: '#DDDDDD',
+  },
+  dateinfotxt:{
+    width: 261,
+    height: 49,
+    left: 394,
+    top: 7,
+  },
+  episodeinfotxt: {
+    width: 394,
+    height: 21,
+    left: 0,
+    top: 69,
+
+    fontSize: 24,
+    display: 'flex',
+    alignItems: 'center',
+    letterSpacing: '-0.01em',
+    color: '#DDDDDD',
+
+  },
+  episodetxt: {
+    overflow: 'hidden',
+    top: 0,
+    left: 0,
+    color: '#FEFEFE',
+    width: 562,
+    height: 70,
+    fontSize: 52,
+    letterSpacing: '0.02em',
+  },
+  epinfo: {
+    width: 394,
+    height: 90,
+    overflow:'hidden',
+    left: 0,
+    top: 0,
+  },
+  episodesview: {
+    position: 'relative',
+    width: 1156,
+    height: 147,
+  },
   components: {
 
     position: 'absolute',
@@ -294,4 +337,4 @@ const styles = theme => ({
   },
 });
 
-export default withStyles(styles)(CharacterPage);
+export default withStyles(styles)(EpisodesPage);

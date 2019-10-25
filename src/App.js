@@ -7,7 +7,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 //import { SuggestionContainer } from './features/suggestion';
 import CharacterContainer from './features/character';
 import { theme } from './styles/styles'
-//import { EpisodesContainer } from './features/episode';
+import EpisodesContainer from './features/episodes';
 
 export class App extends Component {
   render() {
@@ -18,6 +18,7 @@ export class App extends Component {
             <ThemeProvider theme={theme}>
               <Switch>
                 <Route exact path="/" component={CharacterContainer} />
+                <Route exact path="/episodes" component={EpisodesContainer} />
               </Switch>
             </ThemeProvider>
           </React.Fragment>
@@ -26,7 +27,6 @@ export class App extends Component {
     );
   }
 }
-//<Route exact path="/episode" component={EpisodesContainer} />
 //<Route path="/suggestion" component={SuggestionContainer} />
 
 export default App;
