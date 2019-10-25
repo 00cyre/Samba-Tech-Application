@@ -8,7 +8,7 @@ import { Typography, List, ListItem, Divider, ListItemText } from '@material-ui/
 
 export class EpisodesPage extends PureComponent {
   state = {
-    searchtxt: '',
+    searchtxt: '.',
     fieldname: undefined,
     episodes: [],
   }
@@ -18,32 +18,51 @@ export class EpisodesPage extends PureComponent {
     });
   };
   componentDidMount() {
+    this.setEpisodes('.');
+  }
+  componentDidUpdate() {
+    this.setEpisodes(this.state.searchtxt);
+  }
+  setEpisodes(txt) {
+    console.log(this.state.episodes);
+    !this.state.searchtxt ? txt = '.' : txt = this.state.searchtxt
+    this.state.episodes = this.props.Episodes.Episodes.filter((e) => {
+      return e.title.toLocaleLowerCase().match(txt.toLocaleLowerCase());
+    })
+
   }
 
   render() {
     const { classes } = this.props;
+    if (this.props.Episodes.Episodes.length > 0) {
+      this.setEpisodes('.');
+    }
     return (
       <React.Fragment >
         <Grid container className={classes.components} spacing={2}>
-          <NavBar classes={classes} pageTitle={'Episodios'} />
+          <NavBar classes={classes} handleChange={this.setFields} pageTitle={'Episodios'} />
           <Grid item xs={12}>
             <Grid container spacing={2} className={classes.content}>
               <table className={classes.root}>
-                {this.props.Episodes.Episodes.map(e => (
-                  <tr className={classes.episodesview}>
-                    <td className={classes.epinfo}>
-                      <span className={classes.episodetxt}>{e.title}</span>
-                      <span className={classes.episodeinfotxt}>Season {e.season} Episodio {e.episode}</span>
-                    </td>
-                    <td className={classes.dateinfotxt}>
-                      <span className={classes.launchdatetxt}>Data de estreia:
+                <tbody>
+                {
+                  this.state.episodes.map(e => (
+                    <tr className={classes.episodesview} key={e.id}>
+                      <td className={classes.epinfo}>
+                        <span className={classes.episodetxt}>{e.title}</span>
+                        <span className={classes.episodeinfotxt}>Season {e.season} Episodio {e.episode}</span>
+                      </td>
+                      <td className={classes.dateinfotxt}>
+                        <span className={classes.launchdatetxt}>Data de estreia:
                       {e.air_date}</span>
-                    </td>
-                    <td className={classes.epcharacterinfo}>
-                      <span className={classes.episodecharacters}>Personagens: {e.characters.map(e =>  e + " ")}</span>
-                    </td>
-                  </tr>
-                ))}
+                      </td>
+                      <td className={classes.epcharacterinfo}>
+                        <span className={classes.episodecharacters}>Personagens: {e.characters.map(e => e + " ")}</span>
+                      </td>
+                    </tr>
+                  ))
+                }
+                </tbody>
               </table>
             </Grid>
           </Grid >
@@ -53,12 +72,12 @@ export class EpisodesPage extends PureComponent {
   }
 }
 const styles = theme => ({
-  epcharacterinfo:{
+  epcharacterinfo: {
     width: 501,
     height: 86,
     left: 655,
   },
-  episodecharacters:{
+  episodecharacters: {
     width: 261,
     height: 21,
     display: 'flex',
@@ -66,10 +85,10 @@ const styles = theme => ({
     letterSpacing: '0.005em',
     color: '#DDDDDD',
   },
-  root:{
-    width:'100%',
+  root: {
+    width: '100%',
   },
-  launchdatetxt:{
+  launchdatetxt: {
     width: 261,
     height: 21,
     left: 0,
@@ -80,7 +99,7 @@ const styles = theme => ({
     letterSpacing: '0.005em',
     color: '#DDDDDD',
   },
-  dateinfotxt:{
+  dateinfotxt: {
     width: 261,
     height: 49,
     left: 394,
@@ -112,7 +131,7 @@ const styles = theme => ({
   epinfo: {
     width: 394,
     height: 90,
-    overflow:'hidden',
+    overflow: 'hidden',
     left: 0,
     top: 0,
   },

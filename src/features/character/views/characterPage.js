@@ -24,9 +24,6 @@ export class CharacterPage extends PureComponent {
   componentDidUpdate() {
     this.setCharacters(this.state.searchtxt, this.state.fieldname);
   }
-  setFilter(value = undefined, field = 'name') {
-    field == 'name' ? this.setFields(value, 'searchtxt') : this.setFields(field, 'searchtxt')
-  }
   setCharacters(txt, field = 'name') {
     console.log(txt, field);
     !this.state.searchtxt ? txt = '.' : txt = this.state.searchtxt
@@ -44,7 +41,7 @@ export class CharacterPage extends PureComponent {
     return (
       <React.Fragment >
         <Grid container className={classes.components} spacing={spacing}>
-          <NavBar classes={classes} pageTitle={'Personagens'} />
+          <NavBar classes={classes} handleChange={this.setFields} searchtxt={this.state.searchtxt} pageTitle={'Personagens'} />
           <Grid item xs={12}>
             <Grid container spacing={spacing} className={classes.content}>
               {this.state.characters.map(value => (

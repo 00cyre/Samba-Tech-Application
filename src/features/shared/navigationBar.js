@@ -6,7 +6,29 @@ import { withStyles } from "@material-ui/styles";
 
 
 export class NavBar extends PureComponent {
+  constructor(props) {
+    super(props);
+  }
 
+  state = {
+    pageTitle: ''
+  }
+  setFields = (value, field) => {
+    this.setState({
+      [field]: value
+    });
+  };
+  setFilter(a, b) {
+    this.updatePageTitle();
+    this.props.handleChange(a, b);
+  }
+  componentDidMount() {
+    this.setFields(this.props.pageTitle, this.state.pageTitle)
+    this.updatePageTitle();
+  }
+  updatePageTitle() {
+    this.props.searchtxt != undefined ? this.setFields(`Você pesquisou por "${this.props.searchtxt.toLowerCase()}"`, this.state.pageTitle) : this.setFields(this.props.pageTitle, 'pageTitle')
+  }
   render() {
     const { classes } = this.props;
     return (
@@ -18,24 +40,25 @@ export class NavBar extends PureComponent {
             src={logo}
             alt="Logo Breaking Bad"
           />
-          <Button className={classes.episodes}>Episodios</Button>
-          <Button className={classes.characters}>Personagens</Button>
-          {this.props.pageTitle !== "Episodios" ? (
-            <Grid>
-              <span className={classes.characterlabel}>{this.props.pageTitle}</span>
-              <Grid className={classes.filtergrid}>
-                <span className={classes.filtertxt}>Filtre por:</span>
-                <Button variant="outlined" value={'Alive'} onClick={e => classes.setFilter(undefined, e.target.value)} className={classes.alivebtn}>Vivo </Button>
-                <Button variant="outlined" value={'Presumed dead'} onClick={e => classes.setFilter(undefined, e.target.value)} className={classes.deadbtn} >Morto</Button>
-                <Button variant="outlined" value={'.'} onClick={e => classes.setFilter(undefined, e.target.value)} className={classes.allbtn}>Todos</Button>
-              </Grid>
-            </Grid>) : ''}
+          <Button href={'/episodes'} className={classes.episodes}>Episodios</Button>
+          <Button href={'/'} className={classes.characters}>Personagens</Button>
+          <Grid>
+            <span className={classes.characterlabel}>{this.props.pageTitle}</span>
+            {
+              this.props.pageTitle !== "Episodios" ? (
+                <Grid className={classes.filtergrid}>
+                  <span className={classes.filtertxt}>Filtre por:</span>
+                  <Button variant="outlined" value={'Alive'} onClick={e => this.setFilter(undefined, e.target.value)} className={classes.alivebtn}>Vivo </Button>
+                  <Button variant="outlined" value={'Presumed dead'} onClick={e => this.setFilter(undefined, e.target.value)} className={classes.deadbtn} >Morto</Button>
+                  <Button variant="outlined" value={'.'} onClick={e => this.setFilter(undefined, e.target.value)} className={classes.allbtn}>Todos</Button>
+                </Grid>) : ''
+            }
+          </Grid>
           <TextField
-            id="character"
+            id="searchbar"
             className={classes.search}
             label={`Pesquise os ${this.props.pageTitle.toLowerCase()}`}
-            value={classes.searchtxt}
-            onChange={e => classes.setFilter(e.target.value, 'searchtxt')}
+            onChange={e => this.setFilter(e.target.value, 'searchtxt')}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
