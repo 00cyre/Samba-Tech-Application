@@ -14,7 +14,7 @@ Na pagina de requisição de sugestão não utilizei o Redux, pois a mesma não 
 
 ## Dificuldades
 
-Sem dificuldades.
+Tempo.
 
 ## Pontos de melhoria da sugestão
 #### Na parte de requisição percebi que no documento faltam algumas informações para a chamada do microsserviço, logo fiz no achometro, percebi que era uma requisição post e os parametros eu passei no body como achava que deveria ser.
@@ -47,3 +47,17 @@ Falta de tempo.
 
 #### Teste Unitário.
 Falta de tempo
+
+
+# Meu workflow normal
+Geralmente faço por estórias onde eu construo minhas features em uma média de 4 dias por feature, onde dentro do desenvolvimento utilizo o TDD, e a qualidade de código é garantida.
+
+# Porque faltaram funcionalidades no desafio?
+O tempo foi meu maior problema, como disse demoro 4 dias para fazer 1 feature, o que nesse caso foram 4 dias para 3 features.
+Não utilizei o TDD nesse desafio pois geralmente é um processo onde exige mais tempo para o desenvolvimento, devido ao planejamento dos testes.
+
+## Espero ter ficado claro.
+
+# Link da aplicação
+https://fhdskljwq.herokuapp.com/
+
