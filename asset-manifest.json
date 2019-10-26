@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.js": "/Samba-Tech-Application/static/js/main.d134830f.chunk.js",
+    "main.js.map": "/Samba-Tech-Application/static/js/main.d134830f.chunk.js.map",
+    "runtime-main.js": "/Samba-Tech-Application/static/js/runtime-main.5b44fefb.js",
+    "runtime-main.js.map": "/Samba-Tech-Application/static/js/runtime-main.5b44fefb.js.map",
+    "static/css/2.585085f3.chunk.css": "/Samba-Tech-Application/static/css/2.585085f3.chunk.css",
+    "static/js/2.a4ea76c6.chunk.js": "/Samba-Tech-Application/static/js/2.a4ea76c6.chunk.js",
+    "static/js/2.a4ea76c6.chunk.js.map": "/Samba-Tech-Application/static/js/2.a4ea76c6.chunk.js.map",
+    "index.html": "/Samba-Tech-Application/index.html",
+    "precache-manifest.f64d961658dfed707b96edce8a047c48.js": "/Samba-Tech-Application/precache-manifest.f64d961658dfed707b96edce8a047c48.js",
+    "service-worker.js": "/Samba-Tech-Application/service-worker.js",
+    "static/css/2.585085f3.chunk.css.map": "/Samba-Tech-Application/static/css/2.585085f3.chunk.css.map",
+    "static/media/logo512.png": "/Samba-Tech-Application/static/media/logo512.82875518.png",
+    "static/media/index.css": "/Samba-Tech-Application/static/media/roboto-latin-900italic.ebf6d164.woff2"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5b44fefb.js",
+    "static/css/2.585085f3.chunk.css",
+    "static/js/2.a4ea76c6.chunk.js",
+    "static/js/main.d134830f.chunk.js"
+  ]
+}
