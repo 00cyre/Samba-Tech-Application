@@ -1,7 +1,6 @@
 import React from "react";
 import { createMuiTheme } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import color from "@material-ui/core/colors/yellow";
 
 export const theme = createMuiTheme({
     overrides: {

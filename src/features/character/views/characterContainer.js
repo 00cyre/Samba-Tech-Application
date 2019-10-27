@@ -4,9 +4,6 @@ import CharacterPage from './characterPage';
 import * as characterOperations from '../redux/characterOperations';
 
 export class CharacterContainer extends PureComponent {
-  async componentDidMount() {
-    await this.props.getCharacter();
-  }
   render() {
     return <CharacterPage {...this.props} />
   }

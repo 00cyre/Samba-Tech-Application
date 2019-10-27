@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react';
 import Grid from '@material-ui/core/Grid';
 import { withStyles, ThemeProvider } from '@material-ui/core/styles';
-import _ from 'lodash'
 import NavBar from '../../shared/navigationBar';
 import { theme } from './styles'
-import { TextField, Button, Input } from '@material-ui/core';
+import { Button, Input } from '@material-ui/core';
+import AlertModal from '../../shared/alertModal'
 export class SuggestionPage extends PureComponent {
   state = {
     searchtxt: '.',
@@ -18,7 +18,7 @@ export class SuggestionPage extends PureComponent {
       [field]: value
     });
   };
-  sendSuggestion = async() => {
+  sendSuggestion = async () => {
     this.props.sendSuggestion(this.state)
   }
   render() {
@@ -43,7 +43,7 @@ export class SuggestionPage extends PureComponent {
                     onChange={e => this.setFields(e.target.value, 'message')}
                     value={this.state.message} placeholder={'Mensagem'} />
                   <Button className={classes.sendmessage}
-                    onClick={async() => this.sendSuggestion(this.state).then((e)=>{alert("Sugestão Enviada com Sucesso");})}></Button>
+                    onClick={async () => this.sendSuggestion(this.state).then((e) => <AlertModal author={this.state.name} />)}></Button>
                 </Grid>
               </Grid>
             </Grid >
@@ -92,9 +92,6 @@ const styles = () => ({
     height: 593,
     left: 391,
   },
-  root: {
-    width: '100%',
-  },
   components: {
 
     position: 'absolute',
@@ -108,19 +105,6 @@ const styles = () => ({
     top: 300,
     height: '100%',
     position: 'absolute'
-  },
-  navigation: {
-    position: 'absolute',
-    width: '100%',
-    height: 257,
-    top: 44,
-
-  },
-  imglogo: {
-    position: 'absolute',
-    width: 202,
-    height: 120,
-
   },
 });
 

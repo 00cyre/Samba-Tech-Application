@@ -1,11 +1,8 @@
 import React, { PureComponent } from 'react';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import _ from 'lodash'
 import NavBar from '../../shared/navigationBar';
-import { Typography, List, ListItem, Divider, ListItemText } from '@material-ui/core';
-
+import EpisodesList from './episodesList'
 export class EpisodesPage extends PureComponent {
   state = {
     searchtxt: '.',
@@ -29,7 +26,6 @@ export class EpisodesPage extends PureComponent {
     this.state.episodes = this.props.Episodes.Episodes.filter((e) => {
       return e.title.toLocaleLowerCase().match(txt.toLocaleLowerCase());
     })
-
   }
 
   render() {
@@ -40,28 +36,12 @@ export class EpisodesPage extends PureComponent {
     return (
       <React.Fragment >
         <Grid container className={classes.components} spacing={2}>
-          <NavBar classes={classes} handleChange={this.setFields} pageTitle={'Episodios'} />
+          <NavBar  handleChange={this.setFields} pageTitle={'Episodios'} />
           <Grid item xs={12}>
             <Grid container spacing={2} className={classes.content}>
               <table className={classes.root}>
                 <tbody>
-                {
-                  this.state.episodes.map(e => (
-                    <tr className={classes.episodesview} key={e.id}>
-                      <td className={classes.epinfo}>
-                        <span className={classes.episodetxt}>{e.title}</span>
-                        <span className={classes.episodeinfotxt}>Season {e.season} Episodio {e.episode}</span>
-                      </td>
-                      <td className={classes.dateinfotxt}>
-                        <span className={classes.launchdatetxt}>Data de estreia:
-                      {e.air_date}</span>
-                      </td>
-                      <td className={classes.epcharacterinfo}>
-                        <span className={classes.episodecharacters}>Personagens: {e.characters.map(e => e + " ")}</span>
-                      </td>
-                    </tr>
-                  ))
-                }
+                  <EpisodesList episodes={this.state.episodes}/>
                 </tbody>
               </table>
             </Grid>

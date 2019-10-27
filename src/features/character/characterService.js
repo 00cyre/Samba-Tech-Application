@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URI_CHARACTER = 'https://www.breakingbadapi.com/api/' + 'characters/';
+const URI_CHARACTER = 'https://www.breakingbadapi.com/api/characters/';
 
 export class CharacterService {
   async returnCharacters() {

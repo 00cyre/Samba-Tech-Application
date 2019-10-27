@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URI_EPISODES = 'https://www.breakingbadapi.com/api/' + 'episodes/';
+const URI_EPISODES = 'https://www.breakingbadapi.com/api/episodes/';
 
 export class EpisodesService {
   async returnEpisodes() {
