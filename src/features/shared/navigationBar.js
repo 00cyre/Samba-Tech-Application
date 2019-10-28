@@ -16,7 +16,7 @@ const NavBar = (props) => {
     searchtxt !== "" ? setTitle(`Você pesquisou por "${searchtxt.toLowerCase()}"`) : setTitle(props.pageTitle)
   }
   const updateTag = (tag) => {
-    props.updateTag(tag.currentTarget.value);
+    props.updateTag(tag.target.parentElement.value);
   }
   useEffect(() => {
     setTitle(props.pageTitle)
