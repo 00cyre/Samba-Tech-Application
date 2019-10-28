@@ -37,7 +37,7 @@ Nenhum
 Geralmente faço por estórias onde eu construo minhas features em uma média de 4 dias por feature, onde dentro do desenvolvimento utilizo o TDD, e a qualidade de código é garantida.
 
 # Porque faltaram testes no desafio?
-Como isso é uma aplicação para teste, e não um produto completo, achei overkill testar todas as funcionalidas,views,components da aplicação, então decidi fazer 1 set de testes na feature ##### **character** onde eu testo desde o redux,services e views.
+Como isso é uma aplicação para teste, e não um produto completo, achei overkill testar todas as funcionalidas,views,components da aplicação, então decidi fazer 1 set de testes na feature **character** onde eu testo desde o redux,services e views.
 
 ## Espero ter ficado claro.
 
