@@ -1,3 +1,8 @@
+# Links e referências
+[Protótipo de tela](https://www.figma.com/file/oRePpw7SAztaCYwkFJaL3x/Aplica%C3%A7%C3%A3o-Samba-Tech?node-id=0%3A1)
+
+[Aplicação web](https://aplicacao-samba-tech.herokuapp.com/)
+
 # Notas de desenvolvimento da aplicação para a empresa SambaTech
 
 Eu desenvolvi essa aplicação pensando em features, como cada funcionalidade sendo separada em suas branchs desenvolvidas individualmente e implementadas de acordo com seu desenvolvimento.Em ambientes normais apos a publicação da feature em master deleto as branchs mas no caso para analise do codigo deixei ela aí mesmo.
@@ -14,7 +19,7 @@ Na pagina de requisição de sugestão não utilizei o Redux, pois a mesma não 
 
 ## Dificuldades
 
-Tempo.
+Nenhuma
 
 ## Pontos de melhoria da sugestão
 #### Na parte de requisição percebi que no documento faltam algumas informações para a chamada do microsserviço, logo fiz no achometro, percebi que era uma requisição post e os parametros eu passei no body como achava que deveria ser.
@@ -26,38 +31,14 @@ Ao invés de utilizar o sistema tradicional de pesquisa utilizei o metodo autoco
 
 ## Pontos de Melhoria do desenvolvimento
 
-# Problemas relacionados a falta de tempo
-
-#### Layout da page de episódios:
-Devido ao meu curto prazo de tempo disponivel para desenvolver fiz alguns cortes na parte do produto para poder entrega-lo para vocês.
-Como puderam perceber o layout da pagina de episodios não segue o prototipo enviado, a listagem não está estilizada.
-
-#### Requisição sugestão
-No quesito, pensando que não estaria disponível o tempo todo, não desenvolvi uma solução para esse problema, ao meu ver pensei, se ele ficar por exemplo 1 dia fora do ar, não iria recuperar essa requisição.
-##### Talvez com mais tempo teria desenvolvido essa funcionalidade
-
-#### Melhor componentização: 
-Novamente devido ao curto prazo alguns componentes poderiam ser quebrados e criar outros componentes reutilizáveis.
-
-#### Resposta da sugestão
-Não criei um modal adequado para informar o usuário da requisição, apenas um alert.
-
-#### Filtro por status
-Falta de tempo.
-
-#### Teste Unitário.
-Falta de tempo
-
+Nenhum
 
 # Meu workflow normal
 Geralmente faço por estórias onde eu construo minhas features em uma média de 4 dias por feature, onde dentro do desenvolvimento utilizo o TDD, e a qualidade de código é garantida.
 
-# Porque faltaram funcionalidades no desafio?
-O tempo foi meu maior problema, como disse demoro 4 dias para fazer 1 feature, o que nesse caso foram 4 dias para 3 features.
-Não utilizei o TDD nesse desafio pois geralmente é um processo onde exige mais tempo para o desenvolvimento, devido ao planejamento dos testes.
+# Porque faltaram testes no desafio?
+Como isso é uma aplicação para teste, e não um produto completo, achei overkill testar todas as funcionalidas,views,components da aplicação, então decidi fazer 1 set de testes na feature ##### **character** onde eu testo desde o redux,services e views.
 
 ## Espero ter ficado claro.
 
-# Link da aplicação
-https://fhdskljwq.herokuapp.com/
 
