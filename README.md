@@ -31,7 +31,9 @@ Ao invés de utilizar o sistema tradicional de pesquisa utilizei o metodo autoco
 
 ## Pontos de Melhoria do desenvolvimento
 
-Nenhum
+Carregamento de componentes via ajax, removendo a necessidade de recarregamento da pagina por completo
+
+Melhores práticas dos Hooks do react (redução de avisos no console do browser)
 
 # Meu workflow normal
 Geralmente faço por estórias onde eu construo minhas features em uma média de 4 dias por feature, onde dentro do desenvolvimento utilizo o TDD, e a qualidade de código é garantida.
@@ -39,6 +41,23 @@ Geralmente faço por estórias onde eu construo minhas features em uma média de
 # Porque faltaram testes no desafio?
 Como isso é uma aplicação para teste, e não um produto completo, achei overkill testar todas as funcionalidas,views,components da aplicação, então decidi fazer 1 set de testes na feature **character** onde eu testo desde o redux,services e views.
 
+
+# Pontos Notáveis do desenvolvimento:
+### Pensando em qualidade meus testes sempre seguem um padrão de nunca abaixar a cobertura
+![testes](https://snipboard.io/inSXQ3.jpg)
+
+### Function components utilizando hooks
+Seguindo Clean Code, componentização em menos de 250 linhas por componente
+Demonstrando tecnologias atuais e suas melhores aplicações, além de boas práticas
+![function components](https://snipboard.io/DjU613.jpg)
+
+### Estruturação por features, melhor manejamento de paginas e componentes.
+![Estruturação](https://snipboard.io/xX7TJ5.jpg)
+
+### Branchs baseadas em features
+![Branchs](https://snipboard.io/7QZ36y.jpg)
+
+### Utilização do redux para facil manejamento de informações
+![Redux](https://snipboard.io/7FNgwQ.jpg)
+
 ## Espero ter ficado claro.
-
-
