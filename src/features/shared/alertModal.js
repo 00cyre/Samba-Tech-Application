@@ -1,21 +1,34 @@
 
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { DialogContent, DialogActions, Button, Dialog, DialogTitle, DialogContentText } from '@material-ui/core';
+import { DialogActions, Button, Dialog, DialogTitle } from '@material-ui/core';
 const styles = () => ({
     avatar: {
         backgroundColor: 'blue[100]',
         color: 'blue[600]',
+    },
+    sendmessage: {
+        position: 'absolute',
+        width: 262,
+        height: 69,
+        left: 0,
+        bottom: 0,
+
+        background: '#0A7A42',
+        borderRadius: 5,
+        textTransform: 'none',
+        color: '#FFFFFF'
     },
 });
 
 const AlertModal = (props) => {
 
     const [open, setOpen] = React.useState(false);
-    const { author } = props;
+    const { author, classes } = props;
 
     const handleClickOpen = () => {
         setOpen(true);
+        props.sendSuggestion();
     };
 
     const handleClose = () => {
@@ -24,9 +37,10 @@ const AlertModal = (props) => {
 
     return (
         <div>
-            <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-                Open alert dialog
-        </Button>
+            <Button className={classes.sendmessage}
+                onClick={handleClickOpen}>
+                Enviar Sugestão
+                    </Button>
             <Dialog
                 open={open}
                 onClose={handleClose}
@@ -34,13 +48,8 @@ const AlertModal = (props) => {
                 aria-describedby="alert-dialog-description"
 
             >
-                <DialogTitle id="alert-dialog-title">{author + "Sua mensagem foi enviada"}</DialogTitle>
-                <DialogContent>
-                    <DialogContentText id="alert-dialog-description">
-                        Let Google help apps determine location. This means sending anonymous location data to
-                        Google, even when no apps are running.
-            </DialogContentText>
-                </DialogContent>
+                <DialogTitle id="alert-dialog-title">{author + " sua mensagem foi enviada"}</DialogTitle>
+
                 <DialogActions>
                     <Button onClick={handleClose} color="primary" autoFocus>
                         Ok

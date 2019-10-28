@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component <CharacterPage/> Should Render <CharacterPage/>  1`] = `
+<CharacterPage
+  Characters={
+    Array [
+      Object {
+        "name": "Walter White",
+      },
+    ]
+  }
+  classes={
+    Object {
+      "components": "CharacterPage-components-1",
+      "content": "CharacterPage-content-2",
+    }
+  }
+  getCharacter={[MockFunction]}
+/>
+`;

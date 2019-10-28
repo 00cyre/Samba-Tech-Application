@@ -1,24 +1,11 @@
-import React, { PureComponent, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import _ from 'lodash'
 import NavBar from '../../shared/navigationBar';
 import CharacterList from './characterList';
-
 const CharacterPage = (props) => {
   const [searchtxt, setSearch] = useState(undefined);
   const [characters, setCharacter] = useState([]);
-  const [tag, setTag] = useState('');
-  const spacing = 2;
-
-  const updateTag = (tag) => {
-    setTag(tag);
-    let el = props.Characters.Characters.filter((e) => {
-      return e.status.match(tag);
-    })
-    setCharacter(el)
-  }
   useEffect(async () => {
     await props.getCharacter();
     setCharacters('.');
@@ -32,26 +19,33 @@ const CharacterPage = (props) => {
     let el = props.Characters.Characters.filter((e) => {
       return e.name.toLocaleLowerCase().match(txt.toLocaleLowerCase());
     })
-      setCharacter(el);
+    setCharacter(el);
   }
+  const updateTag = (tag) => {
+    let el = props.Characters.Characters.filter((e) => {
+      return e.status.match(tag);
+    })
+    setCharacter(el)
+  }
+  const spacing = 2;
   const { classes } = props;
   if (props.Characters.Characters > 2) {
     setCharacters('.');
   }
   return (
     <React.Fragment >
-      <Grid container className={classes.components} spacing={spacing}>
+      <Grid id={'mainGrid'} container className={classes.components} spacing={spacing}>
         <NavBar classes={classes} handleChange={setCharacters} searchtxt={searchtxt} pageTitle={'Personagens'} updateTag={updateTag} />
         <Grid item xs={12}>
           <Grid container spacing={spacing} className={classes.content}>
-            <CharacterList characters={characters}/>
+            <CharacterList characters={characters} />
           </Grid>
         </Grid>
       </Grid>
     </React.Fragment >
   );
 }
-const styles = theme => ({
+const styles = () => ({
   components: {
     position: 'absolute',
     width: 1550,

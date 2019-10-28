@@ -15,13 +15,13 @@ const NavBar = (props) => {
     searchtxt === undefined && (searchtxt = '');
     searchtxt !== "" ? setTitle(`Você pesquisou por "${searchtxt.toLowerCase()}"`) : setTitle(props.pageTitle)
   }
-  const updateTag = (tag) =>{
+  const updateTag = (tag) => {
     props.updateTag(tag.currentTarget.value);
   }
   useEffect(() => {
     setTitle(props.pageTitle)
     updatePageTitle();
-  }, []);
+  }, [props.pageTitle]);
   const { classes } = props;
   return (
     <Grid item xs={12}>
@@ -47,19 +47,24 @@ const NavBar = (props) => {
               </Grid>) : ''
           }
         </Grid>
-        <TextField
-          id="searchbar"
-          className={classes.search}
-          label={`Pesquise os ${props.pageTitle.toLowerCase()}`}
-          onChange={e => setFilter(e.target.value, 'searchtxt')}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <Search></Search>
-              </InputAdornment>
-            ),
-          }}
-        />
+        {
+          props.pageTitle !== '' ? (
+            <TextField
+              id="searchbar"
+              className={classes.search}
+              label={`Pesquise os ${props.pageTitle.toLowerCase()}`}
+              onChange={e => setFilter(e.target.value, 'searchtxt')}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <Search></Search>
+                  </InputAdornment>
+                ),
+              }}
+            />
+          ) : ''
+        }
+
       </Grid>
     </Grid>
   )
@@ -72,6 +77,7 @@ const styles = theme => ({
     left: 623,
     top: 41,
     fontSize: 17,
+    textTransform: 'none',
     display: 'flex',
     alignItems: 'flex-end',
     letterSpacing: '0.015em',
@@ -136,7 +142,6 @@ const styles = theme => ({
     position: 'absolute'
   },
   characterlabel: {
-
     position: 'absolute',
     width: 900,
     left: 0,
@@ -160,6 +165,7 @@ const styles = theme => ({
     display: 'flex',
     alignItems: 'flex-end',
     letterSpacing: '0.015em',
+    textTransform: 'none',
 
     color: '#5D5D5D',
 
@@ -176,6 +182,7 @@ const styles = theme => ({
     position: 'absolute',
     width: 102,
     left: 521,
+    textTransform: 'none',
     top: 41,
 
     fontSize: 17,

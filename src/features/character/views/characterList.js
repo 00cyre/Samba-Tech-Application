@@ -14,13 +14,13 @@ const CharacterList = (props) => {
                     }} />
                     <Paper className={classes.statusbox}
                         style={
-                            value.status == 'Deceased' ? { backgroundColor: '#F56523' } : value.status == 'Alive' ? { backgroundColor: '#0A7A42' } : { backgroundColor: '#8C8C8C' }
+                            value.status === 'Deceased' ? { backgroundColor: '#F56523' } : value.status === 'Alive' ? { backgroundColor: '#0A7A42' } : { backgroundColor: '#8C8C8C' }
                         }>
                         <span className={classes.statustxt}>{value.status}</span>
                     </Paper>
                     <Grid className={classes.charInfo}>
                         <span className={classes.nametxt}>{value.name}</span>
-                        <span className={classes.birthdaytxt}>⭐ {value.birthday}</span>
+                        <span role="img" aria-label="star emoji" className={classes.birthdaytxt}>⭐ {value.birthday}</span>
                         <span className={classes.occupationtxt}>{value.occupation.map(e => ' ' + e)} </span>
                     </Grid>
                 </Paper>

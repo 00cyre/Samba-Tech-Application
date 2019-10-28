@@ -5,7 +5,6 @@ export const INITIAL_STATE = {
 };
 
 export default (state = INITIAL_STATE, action) => {
-
   switch (action.type) {
     case characterActions.GET_CHARACTER:
       return { ...state, Characters: action.payload.characters }

@@ -1,9 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import { shallow, configure } from 'enzyme';
+import { App } from './App';
+import Adapter from 'enzyme-adapter-react-16';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+configure({adapter: new Adapter()});
+describe('Testa <App />', () => {
+  it('Deve renderizar <App /> snapshot', () => {
+    const component = shallow(<App />);
+    expect(component).toMatchSnapshot();
+  });
 });

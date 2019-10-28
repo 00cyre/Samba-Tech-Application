@@ -18,6 +18,12 @@
     "redux-thunk": "^2.3.0",
     "typeface-roboto": "0.0.75"
   },
+  "devDependencies": {
+    "axios-mock-adapter": "^1.15.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.7.1",
+    "enzyme-to-json": "^3.3.5"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -52,10 +58,10 @@
       "enzyme-to-json/serializer"
     ],
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx}",
-      "!src/**/index.js",
-      "!src/**/*.ig.js",
-      "!src/styles/*"
+      "src/features/**/*.{js,jsx}",
+      "!src/features/**/index.js",
+      "!src/features/**/*.ig.js",
+      "!src/features/styles/*"
     ]
   }
 }

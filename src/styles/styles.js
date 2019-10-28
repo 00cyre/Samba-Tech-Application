@@ -4,9 +4,10 @@ import TextField from "@material-ui/core/TextField";
 
 export const theme = createMuiTheme({
     overrides: {
+
         MuiSvgIcon: {
-                color: '#A9A9A9',
-                bottom: 20,
+            color: '#A9A9A9',
+            bottom: 20,
         },
         MuiFormControl: {
             color: '#A9A9A9'

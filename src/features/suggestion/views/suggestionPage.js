@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import { withStyles, ThemeProvider } from '@material-ui/core/styles';
 import NavBar from '../../shared/navigationBar';
 import { theme } from './styles'
-import { Button, Input } from '@material-ui/core';
+import { Input } from '@material-ui/core';
 import AlertModal from '../../shared/alertModal'
 export class SuggestionPage extends PureComponent {
   state = {
@@ -28,7 +28,9 @@ export class SuggestionPage extends PureComponent {
       <React.Fragment >
         <ThemeProvider theme={theme}>
           <Grid container className={classes.components} spacing={2}>
-            <NavBar classes={classes} handleChange={this.setFields} pageTitle={''} />
+            <NavBar classes={classes} handleChange={this.setFields} pageTitle={''}/>
+            <span className={classes.suggestiontext}>Envie sua sugestão</span>
+
             <Grid item xs={12}>
               <Grid container spacing={2} className={classes.content}>
                 <Grid className={classes.formGrid}>
@@ -42,8 +44,8 @@ export class SuggestionPage extends PureComponent {
                   <Input className={classes.message}
                     onChange={e => this.setFields(e.target.value, 'message')}
                     value={this.state.message} placeholder={'Mensagem'} />
-                  <Button className={classes.sendmessage}
-                    onClick={async () => this.sendSuggestion(this.state).then((e) => <AlertModal author={this.state.name} />)}></Button>
+                  <AlertModal author={this.state.name} sendSuggestion={this.sendSuggestion} />
+
                 </Grid>
               </Grid>
             </Grid >
@@ -54,6 +56,15 @@ export class SuggestionPage extends PureComponent {
   }
 }
 const styles = () => ({
+  suggestiontext:{
+    color: '#FAFAFA',
+    width: '100%',
+    top: 300,
+    position: 'absolute',
+    fontSize: 37,
+    textAlign: 'center',
+    letterSpacing: '0.07em',
+  },
   message: {
     position: 'absolute',
     width: 780,
@@ -64,16 +75,7 @@ const styles = () => ({
     background: '#FFFFFF',
     borderRadius: 5,
   },
-  sendmessage: {
-    position: 'absolute',
-    width: 262,
-    height: 69,
-    left: 0,
-    bottom: 0,
-
-    background: '#0A7A42',
-    borderRadius: 5,
-  },
+  
   name: {
 
     height: 80,

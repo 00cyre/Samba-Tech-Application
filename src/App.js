@@ -17,8 +17,8 @@ export class App extends Component {
             <ThemeProvider theme={theme}>
               <Switch>
                 <Route exact path="/" component={CharacterContainer} />
-                <Route exact path="/episodes" component={EpisodesContainer} />
                 <Route exact path="/suggestion" component={SuggestionContainer} />
+                <Route exact path="/episodes" component={EpisodesContainer} />
               </Switch>
             </ThemeProvider>
           </React.Fragment>
