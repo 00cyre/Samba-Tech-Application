@@ -31,6 +31,9 @@ Ao invés de utilizar o sistema tradicional de pesquisa utilizei o metodo autoco
 
 ## Pontos de Melhoria do desenvolvimento
 
+Utilização dos serviços aws,google cloud.
+Não utilizei pois achei mais prático utilizar o heroku para esse teste, mas não significa que não utilizo normalmente, só foi preferencia minha mesmo.
+
 Carregamento de componentes via ajax, removendo a necessidade de recarregamento da pagina por completo
 
 Melhores práticas dos Hooks do react (redução de avisos no console do browser)
